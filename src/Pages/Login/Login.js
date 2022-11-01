@@ -21,21 +21,22 @@ const Login = () => {
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="text" placeholder="email" className="input input-bordered" />
+          <input name='email' type="text" placeholder="email" className="input input-bordered" />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="text" placeholder="password" className="input input-bordered" />
+          <input name='password' type="text" placeholder="password" className="input input-bordered" />
           <label className="label">
             <Link href="#" className="label-text-alt link link-hover">Forgot password?</Link>
           </label>
         </div>
         <div className="form-control mt-6">
-            <input className="btn btn-primary" type="submit" value="login" />
+            <input className="btn bg-red-500 border-0" type="submit" value="login" />
         </div>
       </form>
+      <p className='text-center py-3'>New to Genius car? <Link className='font-bold text-red-600' to='/signup'>Sign up</Link></p>
     </div>
   </div>
 </div>
