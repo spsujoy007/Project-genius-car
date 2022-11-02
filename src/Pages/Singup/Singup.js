@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import img from '../../assets/images/login/login.svg'
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 
 const Singup = () => {
+  const {createUser} = useContext(AuthContext)
 
     const handleSignup = (event) => {
         event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        createUser(email, password)
+        .then(result => {
+          const user = result.user;
+          console.log(user)
+        })
+        .catch(err => console.log(err))
     }
 
     return (
@@ -34,7 +46,7 @@ const Singup = () => {
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input name='password' type="text" placeholder="password" className="input input-bordered"  required/>
+          <input name='password' type="password" placeholder="password" className="input input-bordered"  required/>
           
         </div>
         <div className="form-control mt-6">
