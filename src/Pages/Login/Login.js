@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 import img from '../../assets/images/login/login.svg'
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const Login = () => {
     const {login} = useContext(AuthContext);
+    const [success, setSuccess] = useState(false);
 
     const handleLogin = (event) => {
         event.preventDefault();
@@ -13,11 +14,13 @@ const Login = () => {
         const password  = form.password.value;
         login(email, password)
         .then(result => {
+          <Navigate to="/" replace={true}/>
           const user = result.user;
           console.log(user)
+          setSuccess(true);
         })
         .catch(err => console.log(err))
-    }
+      }
 
     return (
         <div className="hero w-full my-5">
@@ -43,6 +46,9 @@ const Login = () => {
             <Link href="#" className="label-text-alt link link-hover">Forgot password?</Link>
           </label>
         </div>
+        
+        {success && <p className='text-success'>Login successful</p>}
+
         <div className="form-control mt-6">
             <input className="btn bg-red-500 border-0" type="submit" value="login" />
         </div>

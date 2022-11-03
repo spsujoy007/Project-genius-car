@@ -1,16 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.svg'
+import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
+import toast, { Toaster } from 'react-hot-toast';
+
+const notify = () => toast.success('Logout successful');
 
 const Header = () => {
-
+  const {user, logout} = useContext(AuthContext);
+  const handleLogout = () =>{
+    logout()
+    .then(() => {
+      notify()
+    })
+    .catch(error => console.error(error))
+  }
     const menuList = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link >About</Link></li>
         <li><Link >Services</Link></li>
         <li><Link >Blog</Link></li>
         <li><Link >About</Link></li>
-        <li><Link to='/login'>Login</Link></li>
+        {
+          user?.uid ? <li><button onClick={handleLogout}>Log out</button></li> : <li><Link to='/login'>Login</Link></li>
+        }
+        <Toaster/>
     </>
 
     return (

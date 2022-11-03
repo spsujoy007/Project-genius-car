@@ -5,7 +5,7 @@ import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 
 const Singup = () => {
-  const {createUser} = useContext(AuthContext)
+  const {createUser, signInGoogle} = useContext(AuthContext)
 
     const handleSignup = (event) => {
         event.preventDefault();
