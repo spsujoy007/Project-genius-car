@@ -25,7 +25,7 @@ const About = () => {
       <p >
       the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. 
       </p> <br />
-      <button className="btn border-0 bg-red-600">Get More Info</button>
+      <button className="btn border-0 btn-primary">Get More Info</button>
     </div>
   </div>
 </div>

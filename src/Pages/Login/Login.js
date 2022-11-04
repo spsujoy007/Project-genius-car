@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import img from '../../assets/images/login/login.svg'
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import toast from 'react-hot-toast';
+const notify = () => toast.success('Login successful');
 
 const Login = () => {
     const {login} = useContext(AuthContext);
@@ -18,6 +20,7 @@ const Login = () => {
           const user = result.user;
           console.log(user)
           setSuccess(true);
+          notify();
         })
         .catch(err => console.log(err))
       }

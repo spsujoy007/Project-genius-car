@@ -26,7 +26,8 @@ const CheckOut = () => {
             price,
             email,
             phone,
-            massage
+            massage,
+            img
         }
 
         
@@ -74,7 +75,7 @@ const CheckOut = () => {
             <figure><img src={img} className="w-1/3 rounded-xl" alt=""/></figure>
         <div className="card-body">
         <h2 className="card-title">{title}</h2>
-        <p className='text-red-400 font-bold'>Price: ${price}</p>
+        <p className='text-blue-500 font-bold'>Price: ${price}</p>
     
         </div>
 </div>
@@ -87,7 +88,7 @@ const CheckOut = () => {
                     <input name='phone' type="number" placeholder="Your phone" className="input input-bordered w-full" required/>
                     <input name='email' type="text" defaultValue={user?.email} readOnly placeholder="Your email" className="text-blue-400 input input-bordered w-full" />
                 </div>
-                    <textarea name='massage' className="textarea textarea-bordered w-full mt-5" placeholder="Bio"></textarea>
+                    <textarea name='massage' className="textarea textarea-bordered w-full mt-5" placeholder="Your massage..." defaultValue="I love online orders..."></textarea>
                     <input type="submit" className='btn bg-blue-500 border-0 w-full' value="Place order" />
                     <Toaster />
             </form>

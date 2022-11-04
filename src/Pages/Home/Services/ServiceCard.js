@@ -10,7 +10,7 @@ const ServiceCard = ({service}) => {
   <div className="card-body ">
     <h2 className="card-title font-semibold">{title}</h2>
     <div className="card-actions justify-end">
-      <p className='text-2xl text-red-600 font-bold'>Price: ${price}</p>
+      <p className='text-2xl text-primary font-bold'>Price: ${price}</p>
       <Link to={`checkout/${_id}`}>
       <button className=" border-0 rounded-full text-4xl"> <FaArrowCircleRight></FaArrowCircleRight> </button>
       </Link>

@@ -5,13 +5,12 @@ import Header from '../Pages/Shared/Header/Header';
 
 const Main = () => {
     return (
-        <div>
-            <Header></Header>
-            <div className='md:mx-20 mx-6'>
+            <Header>
+                <div className='md:mx-20 mx-6'>
                 <Outlet></Outlet>
             </div>
             <Footer></Footer>
-        </div>
+            </Header>
     );
 };
 

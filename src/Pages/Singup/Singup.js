@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import img from '../../assets/images/login/login.svg'
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
-
+import toast from 'react-hot-toast';
+const notify = () => toast.success('Signup completed');
 
 const Singup = () => {
   const {createUser, signInGoogle} = useContext(AuthContext)
@@ -16,7 +17,8 @@ const Singup = () => {
         createUser(email, password)
         .then(result => {
           const user = result.user;
-          console.log(user)
+          console.log(user);
+          notify()
         })
         .catch(err => console.log(err))
     }
