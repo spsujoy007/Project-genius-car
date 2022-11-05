@@ -54,7 +54,6 @@ const CheckOut = () => {
                 .then((response) => response.json())
                 .then((data) => {
                     if(data.acknowledged){
-                        console.log(data)
                         notify()
                         form.reset()
                     }
@@ -71,8 +70,7 @@ const CheckOut = () => {
     return (
         <div>
             <div className='mb-3'>
-            <div className="card card-side bg-base-100 shadow-xl p-3">
-            <figure><img src={img} className="w-1/3 rounded-xl" alt=""/></figure>
+            <div className="card card-side bg-base-100 shadow-xl p-1">
         <div className="card-body">
         <h2 className="card-title">{title}</h2>
         <p className='text-blue-500 font-bold'>Price: ${price}</p>

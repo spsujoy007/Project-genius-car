@@ -29,7 +29,7 @@ const OrderRow = ({order, handleDelete, handleStatusUpdate}) => {
           <br/>
           <span className="badge badge-warning badge-sm">${price}</span>
         </td>
-        <td>
+        <td title={email}>
             {email.length > 18 ? <>{email.slice(0, 18)}...</> : email}
         </td>
         <th>

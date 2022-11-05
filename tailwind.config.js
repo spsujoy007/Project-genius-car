@@ -30,24 +30,24 @@ module.exports = {
       {
         light: {
         
-          "primary": "#be7be5",
+          "primary": "#ced633",
           
-          "secondary": "#eaa6ed",
-                   
-          "accent": "#e8b07f",
-                   
-          "neutral": "#231D25",
-                   
-          "base-100": "#F2ECF3",
-                   
-          "info": "#58B9E9",
-                   
-          "success": "#40E7A5",
-                   
-          "warning": "#F7C75F",
-                   
-          "error": "#FB3C23",
-                   },
+ "secondary": "#336896",
+          
+ "accent": "#79a512",
+          
+ "neutral": "#282939",
+          
+ "base-100": "#EAF1F6",
+          
+ "info": "#A2C1E2",
+          
+ "success": "#1ED27E",
+          
+ "warning": "#F4B515",
+          
+ "error": "#F26363",
+          },
       },
     ],
     

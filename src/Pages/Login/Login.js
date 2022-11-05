@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../assets/images/login/login.svg'
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
@@ -8,6 +8,12 @@ const notify = () => toast.success('Login successful');
 const Login = () => {
     const {login} = useContext(AuthContext);
     const [success, setSuccess] = useState(false);
+    const [error, setError] = useState();
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathName || '/'
 
     const handleLogin = (event) => {
         event.preventDefault();
@@ -21,8 +27,13 @@ const Login = () => {
           console.log(user)
           setSuccess(true);
           notify();
+          setError('')
+          navigate(from, {replace: true})
+          form.reset();
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+          setError(err.message)
+        })
       }
 
     return (
@@ -51,6 +62,7 @@ const Login = () => {
         </div>
         
         {success && <p className='text-success'>Login successful</p>}
+        <p className='text-warning'>{error && "Email or Password is not matched!"}</p>
 
         <div className="form-control mt-6">
             <input className="btn bg-red-500 border-0" type="submit" value="login" />
