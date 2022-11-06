@@ -8,6 +8,7 @@ const notify = () => toast.success('Order succesfully deleted');
 const Orders = () => {
     const {user} = useContext(AuthContext);
     const [orders, setOrders ] = useState([]);
+
     const handleDelete = id => {
         const procced = window.confirm("Are you sure, you want to delete your product?");
         if(procced){
@@ -49,9 +50,13 @@ const Orders = () => {
    
     useEffect( () =>{
         if(user?.email){
-            fetch(`http://localhost:5000/orders?email=${user?.email}`)
-        .then(res => res.json())
-        .then(data => setOrders(data))
+            fetch(`http://localhost:5000/orders?email=${user?.email}`, {
+              headers: {
+                  authorization: `Bearer ${localStorage.getItem('genius-token')}`
+              }
+            })
+              .then(res => res.json())
+              .then(data => setOrders(data))
         }
     } , [user?.email])
     return (
@@ -82,6 +87,7 @@ const Orders = () => {
             handleStatusUpdate={handleStatusUpdate}
             ></OrderRow>)
       }
+
       
     </tbody>
     
