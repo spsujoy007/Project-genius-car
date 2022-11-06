@@ -31,7 +31,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/orders',
-                element: <Orders></Orders>
+                element: <PrivetRoute> <Orders></Orders> </PrivetRoute>
             }
         ]
     }

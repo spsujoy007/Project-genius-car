@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import img from '../../assets/images/login/login.svg'
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
@@ -20,11 +20,32 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password  = form.password.value;
+        
+        
         login(email, password)
         .then(result => {
-          <Navigate to="/" replace={true}/>
           const user = result.user;
-          console.log(user)
+
+          const currentUser = {
+            email: user.email
+          }
+          console.log(currentUser)
+
+          // get jwt token 
+          fetch('http://localhost:5000/jwt', {
+            method: "POST",
+            headers: {
+              'content-type': 'application/json'
+            },
+            body: JSON.stringify(currentUser)
+          })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data)
+            // local storage is the easiest but not secure
+            localStorage.setItem('genius-token', data.token)
+          })
+
           setSuccess(true);
           notify();
           setError('')
